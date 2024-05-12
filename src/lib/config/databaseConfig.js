@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
-// Define the MongoDB connection string
+
 const uri = 'mongodb://localhost:27017';
 
 // Function to connect to the MongoDB database
 async function connectToDatabase() {
     try {
-        // Check if the URI is defined
+        // Checking if the URI is defined.......remember o
         if (!uri) {
             throw new Error('MongoDB URI is not defined.');
         }
