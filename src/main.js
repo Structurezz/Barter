@@ -1,23 +1,28 @@
-// Import the database functions from databaseConfig.js
-import { connectToDatabase, insertDocument, closeDatabase } from './lib/config/databaseConfig.js';
+import { connectToDatabase, closeDatabase } from './lib/config/databaseConfig.js';
+import { server } from './bootstrap/server.js';
 
-async function main() {
-    try {
-        // Connect to the database
-        await connectToDatabase();
-        console.log("Connected to the database");
+// Create a flag to track whether the server is already started
+let serverStarted = false;
 
-        // Insert a document into the database
-        const document = { name: 'John Doe', age: 30, status: 'active' };
-        await insertDocument(document);
-        console.log("Inserted document:", document);
-
-        // Close the database connection
-        await closeDatabase();
-        console.log("Closed the database connection");
-    } catch (error) {
-        console.error('Error:', error);
+const startServer = async () => {
+  try {
+    // Connect to the database only if the server is not already started
+    if (!serverStarted) {
+      await connectToDatabase();
+      serverStarted = true;
     }
-}
 
-main();
+    // Start the server if it's not already started
+    if (!server.listening) {
+      server.listen(27017, () =>
+        console.info(`📢 Application running on port 21390`)
+      );
+    }
+  } catch (error) {
+    console.error('Error starting server:', error);
+    process.exit(1); // Exit the process with an error code
+  }
+};
+
+// Start the server
+startServer();
