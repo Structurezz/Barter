@@ -11,6 +11,7 @@ config(); // Load environment variables from .env file
 
 const app = express();
 
+
 // Middleware setup
 app.use(bodyParser.json()); // Parse incoming request bodies in JSON format
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded request bodies
@@ -38,23 +39,9 @@ app.use(cors({
 
 // MongoDB connection
 
-const connectWithRetry = () => {
-    mongoose.connect(process.env.MONGO_URI, { 
-        useNewUrlParser: true, 
-        useUnifiedTopology: true 
-    })
-    .then(() => {
-        console.log('MongoDB connected successfully');
-    })
-    .catch((err) => {
-        console.error('Error connecting to MongoDB:', err);
-        console.log('Retrying connection after 5 seconds...');
-        setTimeout(connectWithRetry, 5000); // Retry connection after 5 seconds
-    });
-};
 
 // Call the connectWithRetry function to initiate the initial connection attempt
-connectWithRetry();
+
 
 // Passport configuration and strategies
 // Your Passport configuration code goes here
@@ -68,10 +55,10 @@ app.get('/', (req, res) => {
 // Add your routes here...
 
 // Start server
-const port = process.env.PORT || 27017;
+const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
 
-export  {server}; // Export the server instance
+export  {server,}; // Export the server instance

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 
-const uri = 'mongodb://localhost:27017';
+const uri = 'mongodb://127.0.0.1:27017/barter?retryWrites=true';
 
 // Function to connect to the MongoDB database
 async function connectToDatabase() {
