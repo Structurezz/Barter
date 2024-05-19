@@ -98,4 +98,4 @@ class AuthService {
     // Add other authentication-related methods as needed
 }
 
-module.exports = new AuthService();
+exports = new AuthService();

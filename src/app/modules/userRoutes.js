@@ -1,12 +1,12 @@
+// routes/userRoutes.mjs
 
-// routes/userRoutes.js
+import express from 'express';
+import * as userController from '../controllers/userController.mjs';
 
-const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
 
 router.post('/users', userController.createUser);
 router.get('/users/:id', userController.getUserById);
 // Add other routes as needed
 
-module.exports = router;
+export default router;

@@ -1,7 +1,6 @@
+// services/userService.mjs
 
-// services/userService.js
-
-const User = require('../models/User');
+import User from '../models/User.mjs';
 
 class UserService {
     async createUser(userData) {
@@ -23,4 +22,4 @@ class UserService {
     // Add other service methods as needed
 }
 
-module.exports = new UserService();
+export default new UserService();

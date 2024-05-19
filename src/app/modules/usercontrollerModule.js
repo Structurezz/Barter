@@ -1,9 +1,8 @@
+// controllers/userController.mjs
 
-// controllers/userController.js
+import User from '../models/User.js';
 
-const User = require('../models/User');
-
-exports.createUser = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
         // Logic to create a new user
     } catch (error) {
@@ -12,7 +11,7 @@ exports.createUser = async (req, res) => {
     }
 };
 
-exports.getUserById = async (req, res) => {
+export const getUserById = async (req, res) => {
     try {
         // Logic to fetch a user by ID
     } catch (error) {

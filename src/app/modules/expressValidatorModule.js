@@ -1,5 +1,9 @@
+// app.js
 
-const { body, validationResult } = require('express-validator');
+import express from 'express';
+import { body, validationResult } from 'express-validator';
+
+const app = express();
 
 app.post('/user', [
     // Validate and sanitize fields
@@ -13,3 +17,5 @@ app.post('/user', [
     }
     // Save user to the database
 });
+
+export default app;

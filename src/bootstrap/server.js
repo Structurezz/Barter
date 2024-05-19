@@ -55,10 +55,10 @@ app.get('/', (req, res) => {
 // Add your routes here...
 
 // Start server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 27017;
 const server = app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port 📢  ${port}`);
 });
 
 
-export  {server,}; // Export the server instance
+export  {server, app}; // Export the server instance

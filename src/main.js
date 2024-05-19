@@ -1,5 +1,5 @@
 import { connectToDatabase, closeDatabase } from './lib/config/databaseConfig.js';
-import { server } from './bootstrap/server.js';
+import { server,app } from './bootstrap/server.js';
 
 // Create a flag to track whether the server is already started
 let serverStarted = false;

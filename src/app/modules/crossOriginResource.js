@@ -1,3 +1,11 @@
+// app.mjs
 
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+
+const app = express();
+
+// Use CORS middleware
 app.use(cors());
+
+export default app;
