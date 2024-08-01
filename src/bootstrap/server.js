@@ -5,9 +5,12 @@ import cors from 'cors';
 import helmet from 'helmet';
 import passport from 'passport';
 import mongoose from 'mongoose';
-import { config } from 'dotenv';
+import dotenv from 'dotenv';
+import { MONGODB_URI, PORT } from '../lib/config/appConfig.js'; 
 
-config(); // Load environment variables from .env file
+dotenv.config(); 
+
+const jwtSecret = process.env.JWT_SECRET;
 
 const app = express();
 
@@ -38,6 +41,13 @@ app.use(cors({
 
 
 // MongoDB connection
+mongoose.connect(MONGODB_URI);
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
 
 
 // Call the connectWithRetry function to initiate the initial connection attempt

@@ -1,40 +1,18 @@
+
 import mongoose from 'mongoose';
+import { MONGODB_URI } from './appConfig.js';
 
-
-const uri = 'mongodb://127.0.0.1:27017/barter?retryWrites=true';
-
-// Function to connect to the MongoDB database
-async function connectToDatabase() {
-    try {
-        // Checking if the URI is defined.......remember o
-        if (!uri) {
-            throw new Error('MongoDB URI is not defined.');
-        }
-
-        // Connect to MongoDB using the provided URI
-        await mongoose.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        
-        console.log('Connected to MongoDB');
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
-        throw error;
-    }
-}
-
-
-// Function to close the database connection
-async function closeDatabase() {
+const connectDB = async () => {
   try {
-    // Close the Mongoose connection
-    await mongoose.connection.close();
-    console.log("Closed the database connection");
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB');
   } catch (error) {
-    console.error("Error closing the database connection:", error);
-    throw error;
+    console.error('MongoDB connection error:', error.message);
+    process.exit(1); // Exit process with failure
   }
-}
+};
 
-export { connectToDatabase, closeDatabase };
+export default connectDB;

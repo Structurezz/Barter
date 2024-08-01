@@ -1,28 +1,9 @@
-import { config } from "dotenv";
 
+import dotenv from 'dotenv';
 
-class AppConfig {
-    constructor() {
-        config();
-        this.server = {
-            port: process.env.PORT || 34092,
-            mode: process.env.NODE_ENV
-        };
-        this.providers = {
-            notifications: {
-                mail: {},
-                sms: {}
-            },
-            paystack: {},
-            security: {
-                jwt: {},
-                tokens: {}
-            },
-            storage: {
-                s3: {}
-            }
-        };
-    }
-}
+dotenv.config();
 
-export default new AppConfig();
+export const API_KEY = process.env.API_KEY;
+export const BASE_URL = process.env.BASE_URL;
+export const MONGODB_URI = process.env.MONGODB_URI;
+export const PORT = process.env.PORT || 3000;
