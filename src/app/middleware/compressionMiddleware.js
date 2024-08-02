@@ -1,5 +1,4 @@
-
 // middleware/compressionMiddleware.js
-const compression = require('compression');
+import compression from 'compression';
 
-exports.compressResponse = compression();
+export const compressResponse = compression();

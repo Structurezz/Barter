@@ -1,9 +1,8 @@
-
 // middleware/authMiddleware.js
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
 
-exports.authenticateUser = async (req, res, next) => {
+export const authenticateUser = async (req, res, next) => {
     try {
         // Extract token from request headers or cookies
         const token = req.headers.authorization;

@@ -1,7 +1,0 @@
-
-{
-    "response": {
-        "status": "success",
-        "data": { "message": "Mock data response" }
-    }
-}

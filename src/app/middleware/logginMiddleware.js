@@ -1,6 +1,5 @@
 
-// middleware/loggingMiddleware.js
-exports.logRequest = (req, res, next) => {
+export const logRequest = (req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();
 };

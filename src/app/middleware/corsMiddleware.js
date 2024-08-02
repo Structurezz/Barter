@@ -1,7 +1,6 @@
-
 // middleware/corsMiddleware.js
-const cors = require('cors');
+import cors from 'cors';
 
-exports.allowCrossOrigin = cors({
+export const allowCrossOrigin = cors({
     origin: process.env.CLIENT_ORIGIN || '*',
 });
